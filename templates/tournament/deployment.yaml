@@ -1,0 +1,27 @@
+{{- if .Values.tournament.enabled }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tournament
+spec:
+  replicas: {{ .Values.tournament.replicaCount }}
+  selector:
+    matchLabels:
+      app: tournament
+  template:
+    metadata:
+      labels:
+        app: tournament
+    spec:
+      containers:
+        - name: tournament
+          image: {{ .Values.tournament.image }}
+          ports:
+            - containerPort: {{ .Values.tournament.port }}
+          env:
+            {{- range .Values.tournament.env }}
+            - name: {{ .name }}
+              value: {{ .value | quote }}
+            {{- end }}
+{{- end }}
+

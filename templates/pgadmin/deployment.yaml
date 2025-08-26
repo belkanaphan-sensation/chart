@@ -1,0 +1,26 @@
+{{- if .Values.pgadmin.enabled }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tournament
+spec:
+  replicas: {{ .Values.pgadmin.replicaCount }}
+  selector:
+    matchLabels:
+      app: pgadmin
+  template:
+    metadata:
+      labels:
+        app: pgadmin
+    spec:
+      containers:
+        - name: pgadmin
+          image: {{ .Values.pgadmin.image }}
+          ports:
+            - containerPort: {{ .Values.pgadmin.port }}
+          env:
+            {{- range .Values.pgadmin.env }}
+            - name: {{ .name }}
+              value: {{ .value | quote }}
+            {{- end }}
+

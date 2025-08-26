@@ -1,0 +1,45 @@
+tournament:
+  enabled: false
+  replicaCount: 1
+  image: ""
+  port: 8080
+  ingress:
+    enabled: false
+    ingressClassName: nginx-internal
+    hosts:
+      - host: chart-example5.local
+        paths:
+          - path: /
+            backend:
+              serviceName: chart-example5.local
+              servicePort: 8080
+  env:
+    - name: ""
+      value: ""
+
+frontend:
+  image: ""
+  replicaCount: 1
+  port: 80
+
+pgadmin:
+  image: ""
+  replicaCount: 1
+  port: 80
+  ingress:
+    enabled: false
+    ingressClassName: nginx-internal
+    hosts:
+      - host: chart-example5.local
+        paths:
+          - path: /
+            backend:
+              serviceName: chart-example5.local
+              servicePort: 8080
+  env:
+    - name: ""
+      value: ""
+
+ingress:
+  enabled: false
+  host: ""

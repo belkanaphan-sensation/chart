@@ -1,0 +1,23 @@
+{{ - if .Values.tournament.ingress.enabled }}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: tournament-ingress
+spec:
+  ingressClassName: {{ .Values.tournament.ingress.ingressClassName }}
+  rules:
+    {{- range .Values.tournament.ingress.hosts }}
+    - host: {{ .host }}
+      http:
+        paths:
+          {{- range .paths }}
+          - path: {{ .path }}
+            pathType: Prefix
+            backend:
+              service:
+                name: tournament
+                port:
+                  number: 8080
+          {{- end }}
+    {{- end }}
+{{- end }}
