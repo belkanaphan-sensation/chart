@@ -1,4 +1,4 @@
-{{ - if .Values.pgadmin.ingress.enabled }}
+{{- if .Values.pgadmin.ingress.enabled }}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -17,7 +17,7 @@ spec:
               service:
                 name: pgadmin
                 port:
-                  number: 8080
+                  number: {{ $.Values.pgadmin.port }}
           {{- end }}
     {{- end }}
 {{- end }}

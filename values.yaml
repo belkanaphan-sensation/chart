@@ -1,5 +1,5 @@
 tournament:
-  enabled: false
+  enabled: true
   replicaCount: 1
   image: ""
   port: 8080
@@ -10,9 +10,6 @@ tournament:
       - host: chart-example5.local
         paths:
           - path: /
-            backend:
-              serviceName: chart-example5.local
-              servicePort: 8080
   env:
     - name: ""
       value: ""
@@ -33,9 +30,6 @@ pgadmin:
       - host: chart-example5.local
         paths:
           - path: /
-            backend:
-              serviceName: chart-example5.local
-              servicePort: 8080
   env:
     - name: ""
       value: ""

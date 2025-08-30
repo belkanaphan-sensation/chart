@@ -6,5 +6,5 @@ spec:
   selector:
     app: tournament
   ports:
-    - port: 8080
+    - port: {{ .Values.tournament.port }}
       targetPort: {{ .Values.tournament.port }}

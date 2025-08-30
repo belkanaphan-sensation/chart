@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: tournament
+  name: pgadmin
 spec:
   replicas: {{ .Values.pgadmin.replicaCount }}
   selector:
@@ -23,4 +23,4 @@ spec:
             - name: {{ .name }}
               value: {{ .value | quote }}
             {{- end }}
-
+{{- end }}

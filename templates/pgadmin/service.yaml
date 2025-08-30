@@ -6,5 +6,5 @@ spec:
   selector:
     app: pgadmin
   ports:
-    - port: 80
-      targetPort: {{ .Values.tournament.port }}
+    - port: {{ .Values.pgadmin.port }}
+      targetPort: {{ .Values.pgadmin.port }}
